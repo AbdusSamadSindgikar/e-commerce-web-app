@@ -5,7 +5,14 @@
         </button>
         <a mat-button [routerLink]="'/'">Home</a>
         <a mat-button [routerLink]="'/courses'">Courses</a>
-        <a mat-button [routerLink]="'/login'">Login</a>
+        <a mat-button *ngIf="!user" [routerLink]="'/login'">Login</a>
+        <a mat-button *ngIf="user" [matMenuTriggerFor]="Menu">{{user.displayName | uppercase}}</a>
+        <mat-menu #Menu="matMenu">
+            <button mat-menu-item [routerLink]="'/orders'">Orders</button>
+            <button mat-menu-item [routerLink]="'/admin-courses'">Admin</button>
+            <button mat-menu-item (click)="logOut()">LogOut</button>
+        </mat-menu>
+
         <a mat-button>About</a>
         <a mat-button>{{count}}<i class="material-icons">add_shopping_cart</i></a>
     </mat-toolbar-row>

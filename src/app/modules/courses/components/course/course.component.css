@@ -1,0 +1,5 @@
+.cardList{
+    width: 600px;
+    height: 100%;
+    flex-direction: row;
+}

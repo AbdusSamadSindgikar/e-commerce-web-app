@@ -1,7 +1,9 @@
 import {NgModule} from '@angular/core'
-
+import {BrowserModule} from '@angular/platform-browser';
 import { MaterialModule } from 'src/app/material-ui.module';
 import { CourseComponent } from './components/course/course.component';
+import { from } from 'rxjs';
+
 
 
 @NgModule({
@@ -10,7 +12,9 @@ import { CourseComponent } from './components/course/course.component';
     
     ],
     imports: [
-      MaterialModule
+      MaterialModule,
+      BrowserModule
+      
     ],
     exports:[CourseComponent],
     providers: [],

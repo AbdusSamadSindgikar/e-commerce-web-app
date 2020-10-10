@@ -1,19 +1,19 @@
 import {NgModule} from '@angular/core'
-import { MenuTopComponent } from './components/menu-top/menu-top.component';
+
 import { MaterialModule } from 'src/app/material-ui.module';
 import { AppRoutingModule } from 'src/app/app-routing.module';
-import {BrowserModule} from '@angular/platform-browser';
+import { OrdersComponent } from './components/orders/orders.component';
 
 @NgModule({
     declarations: [
-      MenuTopComponent
-    ],
+      
+    OrdersComponent],
     imports: [
       MaterialModule,
-      AppRoutingModule,BrowserModule
+      AppRoutingModule
     ],
-    exports:[MenuTopComponent],
+    exports:[],
     providers: [],
     bootstrap: []
   })
-  export class AppModuleMenu { }
+  export class AppModuleOrders { }
