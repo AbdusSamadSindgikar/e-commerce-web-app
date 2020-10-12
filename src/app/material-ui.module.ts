@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import {CdkTableModule} from '@angular/cdk/table';
+
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatButtonModule} from '@angular/material/button';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
@@ -51,6 +52,7 @@ const modules = [
   MatInputModule,
   MatListModule,
   MatMenuModule,
+  
 //   MatNativeDateModule,
   MatPaginatorModule,
   MatProgressBarModule,
@@ -67,11 +69,13 @@ const modules = [
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule,
+  
 ];
 
 @NgModule({
   imports: modules,
   exports: modules,
+
 })
 export class MaterialModule {
 }

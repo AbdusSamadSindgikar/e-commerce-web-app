@@ -17,7 +17,7 @@ export class MenuTopComponent implements OnInit {
   ngOnInit(): void {
   }
   logOut(){
-    this.logout.logOut();
+   this.logout.logOut();
   }
 
 }

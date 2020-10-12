@@ -1,9 +1,10 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit, OnChanges } from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/auth'
 import * as firebase from 'firebase'
 import { CanActivate, Router } from '@angular/router';
-import {map} from 'rxjs/operators'
+import {map, switchMap} from 'rxjs/operators'
 import { Observable } from 'rxjs';
+
 import { UserService } from '../../users/service/user.service';
 
 @Injectable({
@@ -11,15 +12,13 @@ import { UserService } from '../../users/service/user.service';
 })
 export class LoginService implements CanActivate {
 
-  constructor(private login:AngularFireAuth,private userService:UserService,private router:Router) {
+   constructor(private login:AngularFireAuth,private userService:UserService,private router:Router) {
     this.login.authState.subscribe(user=>{
-          
-            this.userService.saveUser(user);
-            // console.log(user.uid);
-            // console.log(user)
-    })
-   }
 
+      this.userService.saveUser(user);
+      // console.log(user)
+   })
+  }
   loginWithGoogle(){
    this.authentication(new firebase.auth.GoogleAuthProvider())
   }
@@ -29,7 +28,7 @@ export class LoginService implements CanActivate {
   }
 
   logOut(){
-    this.login.signOut();
+   return this.login.signOut()
   }
   getCurrentUser(){
     return this.login.authState;
@@ -43,6 +42,18 @@ export class LoginService implements CanActivate {
             this.router.navigate['/login'];
             return false;
           }))
-    
   }
+  
+  
+  // getCurrentUserForDb() {
+  // return this.login.authState.
+  //         pipe(
+  //           switchMap(user =>{
+  //            return this.userService.getUserByuid(user.uid)
+  //           }),
+  //           map(user=>{
+  //             return user;
+  //           })
+  //         )
+  // }
 }
